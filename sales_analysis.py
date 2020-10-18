@@ -12,3 +12,5 @@ g.add_legend();
 g = sns.FacetGrid(df, col="age", hue="gender")
 g.map(plt.scatter, "Impressions", "Clicks", alpha=.4)
 g.add_legend();
+
+plt.show()
