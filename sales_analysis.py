@@ -1,12 +1,15 @@
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-dataset = pd.read_csv("KAG_conversion_data.csv")
+df = pd.read_csv("KAG_conversion_data.csv")
 
-print(dataset.head())
-print(dataset.info())
-print(dataset.shape)
-print(dataset.describe())
+g = sns.FacetGrid(df, col="gender", hue="age")
+g.map(plt.scatter, "Impressions", "Clicks", alpha=.4)
+g.add_legend();
 
-print("We have customers from age groups as follows:")
-print(dataset['age'].unique())
+g = sns.FacetGrid(df, col="age", hue="gender")
+g.map(plt.scatter, "Impressions", "Clicks", alpha=.4)
+g.add_legend();
+print(g)
